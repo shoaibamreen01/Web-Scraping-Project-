@@ -1,62 +1,52 @@
-# Bangladesh Perspective Project
+# Web Scraping Project - Poultry Feed Price Tracker
 
-## Overview
-This project focuses on predicting lung cancer outcomes using a synthetic dataset with a Bangladesh perspective. The analysis includes data preprocessing, exploratory data analysis (EDA), and machine learning modeling.
+A Python-based web scraper that collects poultry feed prices from multiple sources in Pakistan.
 
-## Dataset
-- **Source**: Large Synthetic Lung Cancer Dataset (Bangladesh Perspective)
-- **Features**: Multiple health and demographic factors including:
-  - Gender
-  - Smoking Status
-  - Air Pollution Exposure
-  - Biomass Fuel Use
-  - Factory Exposure
-  - Family History
-  - Diet Habit
-  - Symptoms
-  - Histology Type
-  - Tumor Stage
-  - Treatment Type
-  - Hospital Type
+## Features
 
-## Project Structure
-The notebook contains the following sections:
+- **Multi-source scraping**: Scrapes live pricing data from zeeshanagro, pricesin, and priceindex
+- **Historical data recovery**: Uses Wayback Machine (CDX API) to reconstruct historical price tables
+- **Data normalization**: Converts prices to standardized 50kg bag pricing in PKR
+- **Automated collection**: Fetches and deduplicates data with proper date handling
 
-1. **Import Library** - Loading necessary Python libraries (pandas, scikit-learn, matplotlib, seaborn)
-2. **Data Loading** - Reading the lung cancer dataset
-3. **Data Preprocessing** - Converting categorical labels to numeric values using Label Encoding
-4. **Exploratory Data Analysis (EDA)** - Visualizing patterns and distributions in the data
-5. **Model Development** - Building and training machine learning models
-6. **Performance Evaluation** - Assessing model accuracy and generating classification reports
+## Files
 
-## Key Libraries Used
-- **pandas** - Data manipulation and analysis
-- **scikit-learn** - Machine learning models and preprocessing
-- **matplotlib & seaborn** - Data visualization
-- **sklearn.ensemble.RandomForestClassifier** - Main predictive model
-
-## Target Variable
-- **Survival_1_Year**: Binary classification (Yes/No) - Predicting one-year survival rate
-
-## How to Use
-1. Ensure you have the required datasets and libraries installed
-2. Open the Jupyter notebook in your preferred environment (Jupyter Lab, VS Code, Google Colab)
-3. Run the cells sequentially to reproduce the analysis
+- `clean_feed_scrape.py` - Main scraper script with multi-source data collection
+- `feed_price_multi_source.csv` - Collected feed price data with timestamps and sources
 
 ## Requirements
-- Python 3.x
+
+- Python 3.7+
+- requests
 - pandas
-- scikit-learn
-- matplotlib
-- seaborn
+- beautifulsoup4
+- python-dateutil
+- tqdm
 
 ## Installation
+
 ```bash
-pip install pandas scikit-learn matplotlib seaborn
+pip install requests pandas beautifulsoup4 python-dateutil tqdm
 ```
 
-## Author
-Shoaib Amreen
+## Usage
+
+```bash
+python clean_feed_scrape.py
+```
+
+The script will scrape current prices and historical data, then save results to `feed_price_multi_source.csv`.
+
+## Data Structure
+
+The output CSV contains:
+- `date` - Collection date (YYYY-MM-DD format)
+- `source` - Data source identifier
+- `feed_name` - Type of poultry feed
+- `price_50kg_rs` - Normalized price for 50kg bag in PKR
+- `raw_price_text` - Original price text from source
+- `raw_row` - Complete raw data row
 
 ## License
-This project is open-source and available for educational and research purposes.
+
+MIT
