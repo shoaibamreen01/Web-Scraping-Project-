@@ -1,52 +1,41 @@
-# Web Scraping Project - Poultry Feed Price Tracker
+# Road Accident Detection Project
 
-A Python-based web scraper that collects poultry feed prices from multiple sources in Pakistan.
+A deep learning-based system for detecting and classifying road accidents in real-time using video streams and image processing.
 
 ## Features
 
-- **Multi-source scraping**: Scrapes live pricing data from zeeshanagro, pricesin, and priceindex
-- **Historical data recovery**: Uses Wayback Machine (CDX API) to reconstruct historical price tables
-- **Data normalization**: Converts prices to standardized 50kg bag pricing in PKR
-- **Automated collection**: Fetches and deduplicates data with proper date handling
+- Real-time accident detection using trained deep learning model
+- Camera integration for live detection
+- Image classification for accident severity
+- Pre-trained model weights included
 
-## Files
+## Project Structure
 
-- `clean_feed_scrape.py` - Main scraper script with multi-source data collection
-- `feed_price_multi_source.csv` - Collected feed price data with timestamps and sources
-
-## Requirements
-
-- Python 3.7+
-- requests
-- pandas
-- beautifulsoup4
-- python-dateutil
-- tqdm
-
-## Installation
-
-```bash
-pip install requests pandas beautifulsoup4 python-dateutil tqdm
-```
+- `main.py` - Main application entry point
+- `detection.py` - Core detection logic
+- `camera.py` - Camera module for video input
+- `accident-classification.ipynb` - Jupyter notebook for model training and analysis
+- `model.json` - Model architecture
+- `model_weights.keras` - Pre-trained model weights
+- `accident_photos/` - Sample accident images for testing
 
 ## Usage
 
 ```bash
-python clean_feed_scrape.py
+python main.py
 ```
 
-The script will scrape current prices and historical data, then save results to `feed_price_multi_source.csv`.
+## Requirements
 
-## Data Structure
+- Python 3.x
+- TensorFlow/Keras
+- OpenCV
+- NumPy
 
-The output CSV contains:
-- `date` - Collection date (YYYY-MM-DD format)
-- `source` - Data source identifier
-- `feed_name` - Type of poultry feed
-- `price_50kg_rs` - Normalized price for 50kg bag in PKR
-- `raw_price_text` - Original price text from source
-- `raw_row` - Complete raw data row
+## Model
+
+The project uses a Keras-based deep learning model trained to classify road accidents from video frames.
 
 ## License
 
-MIT
+This project is open source and available under the MIT License.
